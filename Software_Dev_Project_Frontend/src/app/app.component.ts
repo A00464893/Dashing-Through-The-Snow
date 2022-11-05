@@ -1,5 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { CdkTableDataSourceInput } from '@angular/cdk/table';
+import { HttpClient,HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import {merge, Observable, of as observableOf} from 'rxjs';
+import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +12,8 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  public forecasts?: WeatherForecast[];
+  forecasts?: MatTableDataSource<WeatherForecast>
+  displayedColumns = ["Date","Temp. (C)","Temp. (F)","Summary"]
   config = {
     "bgsColor": "red",
     "bgsOpacity": 0.5,
@@ -41,12 +46,15 @@ export class AppComponent {
 }
 
   constructor(http: HttpClient) {
-    http.get<WeatherForecast[]>('/weatherforecast').subscribe(result => {
-      this.forecasts = result;
+    http.get<WeatherForecast[]>('http://localhost:5175/weatherforecast').subscribe(r => {
+      this.forecasts = new MatTableDataSource(r);
     }, error => console.error(error));
   }
   
   title = 'Software_Dev_Project';
+ 
+
+ 
 }
 
 interface WeatherForecast {
