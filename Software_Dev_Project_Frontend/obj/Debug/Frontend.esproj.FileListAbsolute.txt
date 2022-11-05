@@ -1,2 +1,4 @@
 D:\Projects\MCDA\Software Dev\Software_Dev_Project\obj\Debug\Frontend.esproj.SuggestedBindingRedirects.cache
 D:\Projects\MCDA\Software Dev\Software_Dev_Project\obj\Debug\Frontend.esproj.CoreCompileInputs.cache
+D:\MCDA\Software Development\Software_Dev_Project\Software_Dev_Project_Frontend\obj\Debug\Frontend.esproj.SuggestedBindingRedirects.cache
+D:\MCDA\Software Development\Software_Dev_Project\Software_Dev_Project_Frontend\obj\Debug\Frontend.esproj.CoreCompileInputs.cache

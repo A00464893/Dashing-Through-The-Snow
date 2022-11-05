@@ -1,4 +1,23 @@
-﻿<h1 id="tableLabel">Weather forecast</h1>
+<ngx-ui-loader
+  [fgsColor]="config.fgsColor"
+  [fgsSize]="config.fgsSize"
+  [bgsColor]="config.bgsColor"
+  [bgsOpacity]="config.bgsOpacity"
+  [bgsSize]="config.bgsSize"
+  [gap]="config.gap"
+  [logoSize]="config.logoSize"
+  [logoUrl]="config.logoUrl"
+  [overlayColor]="config.overlayColor"
+  [pbColor]="config.pbColor"
+  [pbThickness]="config.pbThickness"
+  [hasProgressBar]="config.hasProgressBar"
+  [text]="config.text"
+  [textColor]="config.textColor"
+></ngx-ui-loader>
+
+<div ngxUiLoaderBlurred>
+
+<h1 id="tableLabel">Weather forecast</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
@@ -22,3 +41,5 @@
         </tr>
     </tbody>
 </table>
+
+</div>
