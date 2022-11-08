@@ -16,8 +16,10 @@
 ></ngx-ui-loader>
 
 <div ngxUiLoaderBlurred>
-
-<h1 id="tableLabel">Weather forecast</h1>
+<app-header (emit_login)="login($event)"></app-header>
+<app-login (logged_user)="getUser($event)" *ngIf="loginFlag && user == ''"></app-login>
+<app-home  *ngIf="user != ''"></app-home>
+<!-- <h1 id="tableLabel">Weather forecast</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
@@ -25,7 +27,6 @@
 <p *ngIf="!forecasts"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
 
 <table *ngIf="forecasts" mat-table [dataSource]="forecasts" class="mat-elevation-z8 demo-table">
-    <!-- Position Column -->
 
     <ng-container matColumnDef="Date">
       <th mat-header-cell *matHeaderCellDef> Date </th>
@@ -50,7 +51,8 @@
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+  </table> -->
 
+<app-footer></app-footer>
 
 </div>

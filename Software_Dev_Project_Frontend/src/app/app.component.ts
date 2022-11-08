@@ -12,8 +12,7 @@ import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 })
 
 export class AppComponent {
-  forecasts?: MatTableDataSource<WeatherForecast>
-  displayedColumns = ["Date","Temp. (C)","Temp. (F)","Summary"]
+  
   config = {
     "bgsColor": "red",
     "bgsOpacity": 0.5,
@@ -45,21 +44,34 @@ export class AppComponent {
     "minTime": 300
 }
 
+// forecasts?: MatTableDataSource<WeatherForecast>
+// displayedColumns = ["Date","Temp. (C)","Temp. (F)","Summary"]
   constructor(http: HttpClient) {
-    http.get<WeatherForecast[]>('http://localhost:5175/weatherforecast').subscribe(r => {
-      this.forecasts = new MatTableDataSource(r);
-    }, error => console.error(error));
+    // http.get<WeatherForecast[]>('http://localhost:5175/weatherforecast').subscribe(r => {
+    //   this.forecasts = new MatTableDataSource(r);
+    // }, error => console.error(error));
   }
   
-  title = 'Software_Dev_Project';
+  title = 'Chirstmas Caroll';
+  loginFlag = false
+  user = '' 
+  login(loginFlag:boolean){
+    this.loginFlag = loginFlag
+    
+  }
+  getUser(user:string){
+    this.user = user
+    this.loginFlag = false
+    this.user = sessionStorage.getItem('user') || ''
+  }
  
 
  
 }
 
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
-}
+// interface WeatherForecast {
+//   date: string;
+//   temperatureC: number;
+//   temperatureF: number;
+//   summary: string;
+// }

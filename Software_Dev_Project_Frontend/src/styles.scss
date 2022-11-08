@@ -18,3 +18,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 table {
     width: 100%;
   }
+
+.mat-icon{
+    background: none;
+    cursor: pointer;
+}
+
+.mat-toolbar{
+    background: none;
+}
+.button{
+    cursor: pointer;
+}
+.mat-menu-item{
+    text-align: center !important;
+}
