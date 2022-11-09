@@ -17,7 +17,7 @@ import {
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,50 +29,59 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { CartComponent } from './components/cart/cart.component';
+import { AccountComponent } from './components/account/account.component';
 
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
-      
-    "bgsColor": "red",
-    "bgsOpacity": 0.5,
-    "bgsPosition": "bottom-center",
-    "bgsSize": 40,
-    "bgsType": "rectangle-bounce",
-    "blur": 5,
-    "delay": 0,
-    "fastFadeOut": false,
-    "fgsColor": "#00ACC1",
-    "fgsPosition": "center-center",
-    "fgsSize": 60,
-    "fgsType": "chasing-dots",
-    "gap": 24,
-    "logoPosition": "center-center",
-    "logoSize": 120,
-    "logoUrl": "",
-    "masterLoaderId": "master",
-    "overlayBorderRadius": "0",
-    "overlayColor": "rgba(40, 40, 40, 0.8)",
-    "pbColor": "#00ACC1",
-    "pbDirection": "ltr",
-    "pbThickness": 5,
-    "hasProgressBar": true,
-    "text": "",
-    "textColor": "#FFFFFF",
-    "textPosition": "center-center",
-    "maxTime": -1,
-    "minTime": 300
-  
+
+  "bgsColor": "red",
+  "bgsOpacity": 0.5,
+  "bgsPosition": "bottom-center",
+  "bgsSize": 40,
+  "bgsType": "rectangle-bounce",
+  "blur": 5,
+  "delay": 0,
+  "fastFadeOut": false,
+  "fgsColor": "#00ACC1",
+  "fgsPosition": "center-center",
+  "fgsSize": 60,
+  "fgsType": "chasing-dots",
+  "gap": 24,
+  "logoPosition": "center-center",
+  "logoSize": 120,
+  "logoUrl": "",
+  "masterLoaderId": "master",
+  "overlayBorderRadius": "0",
+  "overlayColor": "rgba(40, 40, 40, 0.8)",
+  "pbColor": "#00ACC1",
+  "pbDirection": "ltr",
+  "pbThickness": 5,
+  "hasProgressBar": true,
+  "text": "",
+  "textColor": "#FFFFFF",
+  "textPosition": "center-center",
+  "maxTime": -1,
+  "minTime": 300
+
 };
 
-const routes: Routes = []
+const routes: Routes = [
+  { path: '',component:HomeComponent},
+  { path: "home", component: HomeComponent },
+  { path: "login", component: LoginComponent },
+  { path: "cart", component: CartComponent },
+  { path: "account", component: AccountComponent }
+
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,8 +92,8 @@ const routes: Routes = []
   ],
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes), BrowserAnimationsModule, SocialLoginModule, MatAutocompleteModule, MatBadgeModule, MatBottomSheetModule,
-    MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatTableModule, 
-    MatDividerModule, NgxUiLoaderModule.forRoot(ngxUiLoaderConfig), NgxUiLoaderRouterModule, NgxUiLoaderHttpModule , MatIconModule, MatMenuModule, MatToolbarModule, MatTooltipModule
+    MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatTableModule,
+    MatDividerModule, NgxUiLoaderModule.forRoot(ngxUiLoaderConfig), NgxUiLoaderRouterModule, NgxUiLoaderHttpModule, MatIconModule, MatMenuModule, MatToolbarModule, MatTooltipModule
   ],
   providers: [
     {

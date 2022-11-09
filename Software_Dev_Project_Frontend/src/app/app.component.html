@@ -16,8 +16,7 @@
 ></ngx-ui-loader>
 
 <div ngxUiLoaderBlurred>
-<app-header (emit_login)="login($event)"></app-header>
-<app-login (logged_user)="getUser($event)" *ngIf="loginFlag && user == ''"></app-login>
+<app-login (logged_user)="getUser($event)" *ngIf="user == ''"></app-login>
 <app-home  *ngIf="user != ''"></app-home>
 <!-- <h1 id="tableLabel">Weather forecast</h1>
 

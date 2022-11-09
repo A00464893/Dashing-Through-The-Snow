@@ -53,15 +53,11 @@ export class AppComponent {
   }
   
   title = 'Chirstmas Caroll';
-  loginFlag = false
+  
   user = '' 
-  login(loginFlag:boolean){
-    this.loginFlag = loginFlag
-    
-  }
+ 
   getUser(user:string){
     this.user = user
-    this.loginFlag = false
     this.user = sessionStorage.getItem('user') || ''
   }
  
