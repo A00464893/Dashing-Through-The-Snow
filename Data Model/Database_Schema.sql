@@ -1,8 +1,10 @@
 create database Christmas;
 go
 
-use christmas;
+use Christmas;
 go
+
+
 
 CREATE TABLE [user] (
   [id] int PRIMARY KEY,
@@ -10,33 +12,27 @@ CREATE TABLE [user] (
   [first_name] nvarchar(255) NOT NULL,
   [last_name] nvarchar(255) NOT NULL,
   [password] nvarchar(255) NOT NULL,
-  [mobile] int NOT NULL
+  [email] nvarchar(255) NOT NULL
 )
 GO
 
 CREATE TABLE [user_address] (
   [id] int PRIMARY KEY,
   [user_id] int NOT NULL,
-  [address_line] nvarchar(255) NOT NULL,
+  [mobile] int NOT NULL,
+  [flat_no] nvarchar(255) NOT NULL,
+  [building_name] nvarchar(255) NOT NULL,
+  [street_address] nvarchar(255) NOT NULL,
   [city] nvarchar(255) NOT NULL,
   [postal_code] nvarchar(255) NOT NULL,
   [country] nvarchar(255) NOT NULL
 )
 GO
 
-CREATE TABLE [payments] (
-  [id] int PRIMARY KEY,
-  [user_id] int NOT NULL,
-  [payment_type] nvarchar(255) NOT NULL,
-  [account_no] int NOT NULL,
-  [expiry] date NOT NULL
-)
-GO
-
 CREATE TABLE [cart_item] (
   [id] int PRIMARY KEY,
   [user_id] int NOT NULL,
-  [session_id] int NOT NULL,
+  [session_id] nvarchar(255),
   [product_id] int NOT NULL,
   [quantity] int NOT NULL
 )
@@ -45,8 +41,11 @@ GO
 CREATE TABLE [payment_details] (
   [id] int PRIMARY KEY,
   [order_id] int NOT NULL,
+  [transaction_id] nvarchar(255) NOT NULL,
+  [user_id] int NOT NULL,
+  [payment_type] nvarchar(255) NOT NULL,
   [amount] int NOT NULL,
-  [status] nvarchar(255) NOT NULL
+  [status] bit NOT NULL
 )
 GO
 
@@ -70,6 +69,7 @@ CREATE TABLE [product] (
   [id] int PRIMARY KEY,
   [name] int NOT NULL,
   [desc] nvarchar(255),
+  [image] varbinary,
   [category_id] int NOT NULL,
   [quantity] int NOT NULL,
   [price] int NOT NULL
@@ -84,9 +84,6 @@ CREATE TABLE [product_category] (
 GO
 
 ALTER TABLE [user_address] ADD FOREIGN KEY ([user_id]) REFERENCES [user] ([id])
-GO
-
-ALTER TABLE [payments] ADD FOREIGN KEY ([user_id]) REFERENCES [user] ([id])
 GO
 
 ALTER TABLE [cart_item] ADD FOREIGN KEY ([user_id]) REFERENCES [user] ([id])
@@ -108,4 +105,10 @@ ALTER TABLE [order_details] ADD FOREIGN KEY ([product_id]) REFERENCES [product] 
 GO
 
 ALTER TABLE [order_details] ADD FOREIGN KEY ([order_id]) REFERENCES [orders] ([id])
+GO
+
+ALTER TABLE [payment_details] ADD FOREIGN KEY ([user_id]) REFERENCES [user] ([id])
+GO
+
+ALTER TABLE [payment_details] ADD FOREIGN KEY ([order_id]) REFERENCES [orders] ([id])
 GO
