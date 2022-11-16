@@ -2,6 +2,7 @@ import { CdkTableDataSourceInput } from '@angular/cdk/table';
 import { HttpClient,HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
@@ -53,13 +54,18 @@ export class AppComponent {
   }
   
   title = 'Chirstmas Caroll';
-  
+  route = 'h'
   user = '' 
  
   getUser(user:string){
     this.user = user
     this.user = sessionStorage.getItem('user') || ''
   }
+
+  getRoute(route : string){
+    this.route = route
+  }
+
  
 
  
