@@ -18,7 +18,7 @@
 <div ngxUiLoaderBlurred>
 <app-header [loginFlag]="loginFlag" [badge]="badge" (routing) = "getRoute($event)" (getSselectedItem) = "getSelectedCat($event)"></app-header>
 <app-login (logged_user)="getUser($event)" *ngIf="route=='l'"></app-login>
-<app-home *ngIf="route=='h'"></app-home>
+<app-home [loginFlag]="loginFlag" *ngIf="route=='h'"></app-home>
 <app-about-us *ngIf="route=='u'"></app-about-us>
 <app-shop *ngIf="route=='s'" [selectedCat]="shopCat" (updateBadge)="getBadge($event)"></app-shop>
 <app-cart *ngIf="route=='c'" (updateBadge)="getBadge($event)"></app-cart>

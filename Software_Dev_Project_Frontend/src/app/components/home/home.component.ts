@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +9,9 @@ export class HomeComponent implements OnInit {
   @Output() getBadge = new EventEmitter();
   constructor() { }
 
-  loginFlag = false
+  @Input() loginFlag: boolean | undefined ;
   badge = 0
-  login(loginFlag:boolean){
-    this.loginFlag = loginFlag
-    
-  }
+  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   updateBadge(item:Object){
     this.getBadge.emit(this.badge)
   }

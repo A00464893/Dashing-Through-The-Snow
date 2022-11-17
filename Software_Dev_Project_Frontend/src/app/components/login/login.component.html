@@ -1,10 +1,112 @@
 <div class="main-body row">
-    <div class="col">
-        <h2>Column 1</h2>
-        <p>Some text..</p>
-      </div>
-      <div class="col">
-        <h2>Column 1</h2>
-        <p>Some text..</p>
-      </div>
+  <div class="col-1"></div>
+  <div class="col-3">
+    <div style="height:5vh"></div>
+    <h2>Welcome Back!</h2>
+    <p>
+      <mat-form-field  appearance="outline">
+        <mat-label>Enter Email</mat-label>
+        <input matInput placeholder="pat@example.com" [formControl]="email_login" [(ngModel)]="login_input.email" required>
+        <mat-error *ngIf="email_login.invalid">{{getLoginEmailError()}}</mat-error>
+        <mat-icon matSuffix>email</mat-icon>
+        <!-- <mat-hint>Hint</mat-hint> -->
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field  appearance="outline">
+        <mat-label>Enter Password</mat-label>
+        <input matInput [type]="login_hide ? 'password' : 'text'" [(ngModel)]="login_input.password" required>
+        <button mat-icon-button matSuffix (click)="login_hide = !login_hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="login_hide">
+          <mat-icon>{{login_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+    <p>
+      <button [disabled]="login_input.email == '' || login_input.password== '' || email_login.invalid" mat-raised-button class="field" color="primary">Login</button>
+    </p>
+    <div class="contain">
+      <div class="line"><mat-divider></mat-divider></div>
+      <div class="text mat-typography">Or</div>
+      <div class="line"><mat-divider></mat-divider></div>
+    </div>
+    <br>
+    <p>
+      <button mat-raised-button class="field" color="basic">
+        <mat-icon class="fit_logo" svgIcon="google"></mat-icon> Login With Google
+      </button>
+    </p>
+    <p>
+      <button mat-raised-button class="field" color="basic">
+        <mat-icon class="fit_logo" svgIcon="facebook"></mat-icon> Login With Facebook
+      </button>
+    </p>
+  </div>
+  <div class="col-1"></div>
+  <div class="col-2">
+    <img style="height: 80%" src="../../../assets/deer.png" />
+  </div>
+  <div class="col-1"></div>
+  <div class="col-3">
+    <div style="height:5vh"></div>
+    <h2>First Time ?</h2>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="First Name" [(ngModel)]="register_input.first">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Last Name" [(ngModel)]="register_input.last">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field  appearance="outline">
+        <mat-label>Enter Email</mat-label>
+        <input matInput placeholder="pat@example.com" [formControl]="email_register" [(ngModel)]="register_input.email" required>
+        <mat-error *ngIf="email_register.invalid">{{getRegisterEmailError()}}</mat-error>
+        <mat-icon matSuffix>email</mat-icon>
+        <!-- <mat-hint>Hint</mat-hint> -->
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field  appearance="outline">
+        <mat-label>Enter Password</mat-label>
+        <input matInput [type]="register_hide ? 'password' : 'text'" [(ngModel)]="register_input.password" required>
+        <button mat-icon-button matSuffix (click)="register_hide = !register_hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="register_hide">
+          <mat-icon>{{register_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field  appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput [(ngModel)]="register_input.confirm_password" required>
+        <mat-hint *ngIf="register_input.password != register_input.confirm_password" style="color: red;">Password Didnot Match</mat-hint>
+      </mat-form-field>
+    </p>
+    <p>
+      <button [disabled]="register_input.email == '' || register_input.password== '' || register_input.first== '' || register_input.last== '' 
+      || register_input.confirm_password== '' || email_register.invalid" mat-raised-button class="field" color="primary">Register</button>
+    </p>
+    <div class="contain">
+      <div class="line"><mat-divider></mat-divider></div>
+      <div class="text mat-typography">Or</div>
+      <div class="line"><mat-divider></mat-divider></div>
+    </div>
+    <br>
+    <p>
+      <button mat-raised-button class="field" color="basic">
+        <mat-icon class="fit_logo" svgIcon="google"></mat-icon> Register With Google
+      </button>
+    </p>
+    <p>
+      <button mat-raised-button class="field" color="basic">
+        <mat-icon class="fit_logo" svgIcon="facebook"></mat-icon> Register With Facebook
+      </button>
+    </p>
+  </div>
 </div>
