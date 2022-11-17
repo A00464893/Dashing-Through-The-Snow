@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.authService.authState.subscribe((result) => {
       this.userDetails = result;
       this.user = result.name;
-      this.logged_user.emit(this.user)
+      this.logged_user.emit(this.userDetails)
     })
     
   }

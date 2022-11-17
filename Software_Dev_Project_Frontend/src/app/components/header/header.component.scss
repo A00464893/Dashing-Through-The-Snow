@@ -45,5 +45,9 @@
   border-radius: 4px;
 }
 .arrow{
-  line-height: 32px;
+  line-height: 32px !important;
+}
+
+::ng-deep .mat-select-value{
+  width: 0 !important;
 }

@@ -9,10 +9,11 @@
     <button mat-button [ngClass]="{'selected':route === 'u'}" (click)="changeRoute('u')">About Us</button>
     <span class="icon_spacer"></span>
     <span [ngClass]="{'selected dropdown':route === 's'}">
-      <button mat-button (click)="changeRoute('s')">Shop</button>
+      <button *ngIf="selected_shop_item.name == ''" mat-button (click)="changeRoute('s')">Shop</button>
+      <button *ngIf="selected_shop_item.name != ''" mat-button (click)="changeRoute('s')">Shop({{selected_shop_item.name}})</button>
       <mat-icon class="arrow">
         <mat-select [(value)] = "selected_shop_item">
-          <mat-option *ngFor="let cat of shop_categories" [value]="cat" (click)="selectedItem">{{cat.name}}</mat-option>
+          <mat-option *ngFor="let cat of shop_categories" [value]="cat" (click)="selectedItem()">{{cat.name}}</mat-option>
         </mat-select>
       </mat-icon>
     </span>

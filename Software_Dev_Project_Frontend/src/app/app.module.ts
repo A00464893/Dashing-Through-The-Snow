@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from '@abacritt/angularx-social-login';
 import {
@@ -99,7 +100,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes), BrowserAnimationsModule, SocialLoginModule, MatAutocompleteModule, MatBadgeModule, MatBottomSheetModule,
-    MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatTableModule,
+    MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatTableModule, NgbModule,
     MatDividerModule, NgxUiLoaderModule.forRoot(ngxUiLoaderConfig), NgxUiLoaderRouterModule, NgxUiLoaderHttpModule, MatIconModule, MatMenuModule, MatSelectModule, MatToolbarModule, MatTooltipModule
   ],
   providers: [

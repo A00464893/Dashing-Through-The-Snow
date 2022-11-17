@@ -13,7 +13,7 @@ import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 })
 
 export class AppComponent {
-  
+  loginFlag = false
   config = {
     "bgsColor": "red",
     "bgsOpacity": 0.5,
@@ -44,6 +44,8 @@ export class AppComponent {
     "maxTime": -1,
     "minTime": 300
 }
+  
+  
 
 // forecasts?: MatTableDataSource<WeatherForecast>
 // displayedColumns = ["Date","Temp. (C)","Temp. (F)","Summary"]
@@ -53,19 +55,33 @@ export class AppComponent {
     // }, error => console.error(error));
   }
   
+  shopCat: {} | undefined;
   title = 'Chirstmas Caroll';
   route = 'h'
-  user = '' 
+  user = {} 
+  badge = 0;
  
   getUser(user:string){
     this.user = user
-    this.user = sessionStorage.getItem('user') || ''
+    sessionStorage.setItem('user',this.user.toString())
+    if ( 'name' in this.user){
+      this.loginFlag = true
+    }
+    else
+      this.loginFlag = false
   }
 
   getRoute(route : string){
     this.route = route
   }
 
+  getSelectedCat(item : {}){
+    this.shopCat = item
+  }
+
+  getBadge(badge:number){
+    this.badge = badge
+  }
  
 
  

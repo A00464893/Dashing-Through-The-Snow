@@ -1,5 +1,5 @@
 import { TemplateBindingParseResult } from '@angular/compiler';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 interface Shop_Categories {
   id: string;
@@ -13,24 +13,27 @@ interface Shop_Categories {
 })
 
 
+
 export class HeaderComponent implements OnInit {
 
   @Output() routing = new EventEmitter();
   @Output() shop_item = new EventEmitter();
-
+  @Input() loginFlag: boolean | undefined ;
+  @Input() badge: number | undefined ;
   
 
   constructor() { }
 
-
-  loginFlag = false
-  selected_shop_item = {}
+  selected_shop_item = { id : '0', name:''}
   shop_categories :Shop_Categories[] = []
 
   selectedItem(): void {
+    this.route = 's'
+    sessionStorage.setItem('route', this.route)
     this.shop_item.emit(this.selected_shop_item)
+    this.routing.emit(this.route)
+
   }
-  badge = 0
   route = 'h'
   getShopItems() {
     return [
@@ -50,6 +53,8 @@ export class HeaderComponent implements OnInit {
     this.route = route
     sessionStorage.setItem('route', this.route)
     this.routing.emit(route)
+    if (route == 's')
+      this.selected_shop_item = { id : '0', name:''}
   }
   login() {
     this.route = 'l'
@@ -58,7 +63,6 @@ export class HeaderComponent implements OnInit {
     this.changeRoute(this.route)
   }
   logout() {
-    this.loginFlag = false
     this.route = 'h'
     sessionStorage.clear()
     sessionStorage.setItem('route', this.route)
