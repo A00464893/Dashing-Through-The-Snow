@@ -20,18 +20,34 @@ export class HeaderComponent implements OnInit {
   @Output() shop_item = new EventEmitter();
   @Input() loginFlag: boolean | undefined ;
   @Input() badge: number | undefined ;
+  @Input() selected_shop_item: Shop_Categories[] = [];
   
 
   constructor() { }
 
-  selected_shop_item!:Shop_Categories
   shop_categories :Shop_Categories[] = []
 
   selectedItem(cat: any): void {
     this.route = 's'
-    this.selected_shop_item = cat
+    if (this.selected_shop_item && this.selected_shop_item.findIndex(x => x.key === cat.key && x.value === cat.value) != -1){
+      console.log(this.selected_shop_item.findIndex(x => x.key === cat.key && x.value === cat.value))
+      this.selected_shop_item.splice(this.selected_shop_item.findIndex(x => x.key === cat.key && x.value === cat.value),1)
+      this.selected_shop_item.push(cat)
+    }
+    else if (this.selected_shop_item && this.selected_shop_item.findIndex(x => x.key === cat.key) != -1){
+      this.selected_shop_item.splice(this.selected_shop_item.findIndex(x => x.key === cat.key),1)
+      this.selected_shop_item.push(cat)
+    }
+    else if (this.selected_shop_item){
+      this.selected_shop_item.push(cat)
+    }
+    else{
+      this.selected_shop_item = []
+      this.selected_shop_item.push(cat)
+    }  
     sessionStorage.setItem('route', this.route)
-    this.shop_item.emit([this.selected_shop_item])
+    console.log(this.selected_shop_item)
+    this.shop_item.emit(this.selected_shop_item)
     this.routing.emit(this.route)
 
   }
@@ -39,11 +55,11 @@ export class HeaderComponent implements OnInit {
   getShopItems() {
     return [
       {
-        key: '1',
+        key: 'category',
         value: "Trees"
       },
       {
-        key: '2',
+        key: 'category',
         value: "Cakes"
       }
     ]
@@ -53,11 +69,6 @@ export class HeaderComponent implements OnInit {
   changeRoute(route: string) {
     this.route = route
     sessionStorage.setItem('route', this.route)
-    
-    if (route == 's'){
-      this.selected_shop_item = { key : '', value:''}
-    }
-      this.shop_item.emit([])
       this.routing.emit(route)
   }
   login() {

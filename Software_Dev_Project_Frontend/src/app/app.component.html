@@ -16,11 +16,11 @@
 ></ngx-ui-loader>
 
 <div ngxUiLoaderBlurred>
-<app-header [loginFlag]="loginFlag" [badge]="badge" (routing) = "getRoute($event)" (shop_item) = "getSelectedCat($event)"></app-header>
+<app-header [loginFlag]="loginFlag" [badge]="badge" [selected_shop_item]="shopCat" (routing) = "getRoute($event)" (shop_item) = "getSelectedCat($event)"></app-header>
 <app-login (logged_user)="getUser($event)" *ngIf="route=='l'"></app-login>
 <app-home [loginFlag]="loginFlag" *ngIf="route=='h'"></app-home>
 <app-about-us *ngIf="route=='u'"></app-about-us>
-<app-shop *ngIf="route=='s'" [selectedCat]="shopCat" (updateBadge)="getBadge($event)"></app-shop>
+<app-shop *ngIf="route=='s'" [selectedCat]="shopCat" (updateBadge)="getBadge($event)" (shop_item) = "getSelectedCat($event)"></app-shop>
 <app-cart *ngIf="route=='c'" (updateBadge)="getBadge($event)"></app-cart>
 <app-account *ngIf="route=='a'"></app-account>
 

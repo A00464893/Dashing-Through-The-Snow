@@ -4,7 +4,8 @@
     <mat-divider></mat-divider>
     <br *ngIf="check_selected()">
     <p *ngIf="check_selected()">
-      <button *ngFor="let select of selectedCat" mat-icon-button color="primary" (click)="clear_selection(select)">{{select.key | titlecase}}  - {{select.value}}&nbsp;
+      <button class="hover_class" *ngFor="let select of selectedCat" mat-stroked-button color="primary" (click)="clear_selection(select)">
+        <a>{{select.key | titlecase}}  : {{select.value}}&nbsp;</a>
         <mat-icon>close</mat-icon>
       </button>
     </p>
@@ -19,10 +20,13 @@
       </mat-expansion-panel>
       <div class="sidenav">
         <div style="padding: 0 1vh 0 1vh;font-size: 15px;font-weight: 400;">Price</div>
-        <mat-slider class="slider_css" min="0" max="10000" (valueChange)="price_filter($event)">
+        <!-- <mat-slider class="slider_css" min="0" max="10000" (valueChange)="price_filter($event)">
           <input [value]="price_attributes.min" [(ngModel)]="price_attributes.min" matSliderStartThumb>
           <input [value]="price_attributes.max" [(ngModel)]="price_attributes.max" matSliderEndThumb> 
-        </mat-slider>
+        </mat-slider> -->
+        <div class="custom-slider">
+        <ngx-slider [(value)]="price_attributes.min" [(highValue)]="price_attributes.max" [options]="price_attributes.options" (userChange)="price_filter($event)"></ngx-slider>
+        </div>
         <section>
           <mat-form-field class="value_width" appearance="fill">
             <mat-label>Min</mat-label>
@@ -37,7 +41,7 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Items
+            Products
           </mat-panel-title>
         </mat-expansion-panel-header>
       </mat-expansion-panel>

@@ -11,7 +11,7 @@
     <span [ngClass]="{'selected dropdown':route === 's'}">
       <button mat-button (click)="changeRoute('s')">Shop</button>
       <mat-icon class="arrow">
-        <mat-select disableRipple [(value)] = "selected_shop_item">
+        <mat-select disableRipple>
           <mat-option *ngFor="let cat of shop_categories" [value]="cat" (click)="selectedItem(cat)">{{cat.value}}</mat-option>
         </mat-select>
       </mat-icon>

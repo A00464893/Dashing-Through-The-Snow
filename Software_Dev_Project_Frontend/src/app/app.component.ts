@@ -82,7 +82,6 @@ export class AppComponent {
 
   getSelectedCat(item : any){
     this.shopCat = item
-    console.log(this.shopCat)
   }
 
   getBadge(badge:number){

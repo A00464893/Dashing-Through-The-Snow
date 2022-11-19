@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
-import { Obj } from '@popperjs/core';
+import { Options, LabelType } from "@angular-slider/ngx-slider";;
 
 interface Selected_Cat {
   key: string;
@@ -16,16 +16,29 @@ export class ShopComponent implements OnInit {
 
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   @Input() selectedCat!: Selected_Cat[];
-
+  @Output() shop_item = new EventEmitter();
   @Output() updateBadge = new EventEmitter();
 
   constructor() { }
 
   price_attributes = {
-    disabled: false,
-    max: 100000,
-    min: 0,
-    thumbLabel: false
+
+    min : 0,
+    max : 100000,
+    options : {
+      floor: 0,
+      ceil: 100000,
+      translate: (value: number, label: LabelType): string => {
+        switch (label) {
+          case LabelType.Low:
+            return "<b>Min:</b> $" + value;
+          case LabelType.High:
+            return "<b>Max:</b> $" + value;
+          default:
+            return "$" + value;
+        }
+      }
+    }
   }
   
   check_selected() {
@@ -39,7 +52,20 @@ export class ShopComponent implements OnInit {
     this.selectedCat.splice(this.selectedCat.findIndex(x => x.key === select.key && x.value === select.value),1)
   }
   price_filter(event: any) {
-    this.selectedCat.push({ key: 'price',value: event})
+    console.log(event)
+    const value = '$'+event.value.toString()+ ' - ' + '$'+event.highValue.toString()
+    if (this.selectedCat && this.selectedCat.findIndex(x => x.key === "price") != -1){
+      this.selectedCat.splice(this.selectedCat.findIndex(x => x.key === "price"),1)
+      this.selectedCat.push({ key: 'price',value: value})
+    }
+    else if (this.selectedCat){
+      this.selectedCat.push({ key: 'price',value: value})
+    }
+    else{
+      this.selectedCat = []
+      this.selectedCat.push({ key: 'price',value: value})
+    } 
+    this.shop_item.emit(this.selectedCat)
   }
 
   badge = 2
