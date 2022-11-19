@@ -16,7 +16,7 @@
 ></ngx-ui-loader>
 
 <div ngxUiLoaderBlurred>
-<app-header [loginFlag]="loginFlag" [badge]="badge" (routing) = "getRoute($event)" (getSselectedItem) = "getSelectedCat($event)"></app-header>
+<app-header [loginFlag]="loginFlag" [badge]="badge" (routing) = "getRoute($event)" (shop_item) = "getSelectedCat($event)"></app-header>
 <app-login (logged_user)="getUser($event)" *ngIf="route=='l'"></app-login>
 <app-home [loginFlag]="loginFlag" *ngIf="route=='h'"></app-home>
 <app-about-us *ngIf="route=='u'"></app-about-us>

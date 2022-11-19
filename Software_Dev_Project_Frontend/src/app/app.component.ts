@@ -6,6 +6,11 @@ import { Router } from '@angular/router';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
+interface Selected_Cat {
+  key: string;
+  value: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -55,7 +60,7 @@ export class AppComponent {
     // }, error => console.error(error));
   }
   
-  shopCat: {} | undefined;
+  shopCat!: Selected_Cat[];
   title = 'Chirstmas Caroll';
   route = 'h'
   user = {} 
@@ -75,8 +80,9 @@ export class AppComponent {
     this.route = route
   }
 
-  getSelectedCat(item : {}){
+  getSelectedCat(item : any){
     this.shopCat = item
+    console.log(this.shopCat)
   }
 
   getBadge(badge:number){

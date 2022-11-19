@@ -1,1 +1,61 @@
-<p>Shop Works</p>
+<mat-drawer-container class="main-body" autosize>
+  <mat-drawer #drawer opened class="sidenav" mode="side">
+    <p class="bold_tag">Filters</p>
+    <mat-divider></mat-divider>
+    <br *ngIf="check_selected()">
+    <p *ngIf="check_selected()">
+      <button *ngFor="let select of selectedCat" mat-icon-button color="primary" (click)="clear_selection(select)">{{select.key | titlecase}}  - {{select.value}}&nbsp;
+        <mat-icon>close</mat-icon>
+      </button>
+    </p>
+    <mat-divider *ngIf="check_selected()"></mat-divider>
+    <mat-accordion class="headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Categories
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+      <div class="sidenav">
+        <div style="padding: 0 1vh 0 1vh;font-size: 15px;font-weight: 400;">Price</div>
+        <mat-slider class="slider_css" min="0" max="10000" (valueChange)="price_filter($event)">
+          <input [value]="price_attributes.min" [(ngModel)]="price_attributes.min" matSliderStartThumb>
+          <input [value]="price_attributes.max" [(ngModel)]="price_attributes.max" matSliderEndThumb> 
+        </mat-slider>
+        <section>
+          <mat-form-field class="value_width" appearance="fill">
+            <mat-label>Min</mat-label>
+            <input matInput type="number" [value]="price_attributes.min" [(ngModel)]="price_attributes.min">
+          </mat-form-field>
+          <mat-form-field class="value_width" appearance="fill">
+            <mat-label>Max</mat-label>
+            <input matInput type="number" [value]="price_attributes.max" [(ngModel)]="price_attributes.max">
+          </mat-form-field>
+        </section>
+      </div>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Items
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <div class="toggle_col">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon *ngIf="drawer.opened" matTooltip="Hide Filters">arrow_left</mat-icon>
+        <mat-icon *ngIf="!drawer.opened" matTooltip="Draw Filters">arrow_right</mat-icon>
+      </button>
+    </div>
+    <div class="rest_col">
+
+    </div>
+
+  </div>
+
+</mat-drawer-container>

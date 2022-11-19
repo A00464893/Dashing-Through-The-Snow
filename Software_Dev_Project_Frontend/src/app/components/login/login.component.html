@@ -23,7 +23,8 @@
       </mat-form-field>
     </p>
     <p>
-      <button [disabled]="login_input.email == '' || login_input.password== '' || email_login.invalid" mat-raised-button class="field" color="primary">Login</button>
+      <button [disabled]="login_input.email == '' || login_input.password== '' || email_login.invalid" mat-raised-button class="field" color="primary" 
+      (click)="login()">Login</button>
     </p>
     <div class="contain">
       <div class="line"><mat-divider></mat-divider></div>
@@ -32,13 +33,13 @@
     </div>
     <br>
     <p>
-      <button mat-raised-button class="field" color="basic">
+      <button mat-raised-button class="field" color="basic" (click)="signInWithProviders('g')">
         <mat-icon class="fit_logo" svgIcon="google"></mat-icon> Login With Google
       </button>
     </p>
     <p>
-      <button mat-raised-button class="field" color="basic">
-        <mat-icon class="fit_logo" svgIcon="facebook"></mat-icon> Login With Facebook
+      <button mat-raised-button class="field" color="basic"  (click)="signInWithProviders('f')">
+        <mat-icon class="fit_logo" svgIcon="facebook" ></mat-icon> Login With Facebook
       </button>
     </p>
   </div>
@@ -90,7 +91,7 @@
     </p>
     <p>
       <button [disabled]="register_input.email == '' || register_input.password== '' || register_input.first== '' || register_input.last== '' 
-      || register_input.confirm_password== '' || email_register.invalid" mat-raised-button class="field" color="primary">Register</button>
+      || register_input.confirm_password== '' || email_register.invalid" mat-raised-button class="field" color="primary" (click)="register()">Register</button>
     </p>
     <div class="contain">
       <div class="line"><mat-divider></mat-divider></div>
@@ -99,12 +100,12 @@
     </div>
     <br>
     <p>
-      <button mat-raised-button class="field" color="basic">
+      <button mat-raised-button class="field" color="basic"  (click)="registerWithProviders('g')">
         <mat-icon class="fit_logo" svgIcon="google"></mat-icon> Register With Google
       </button>
     </p>
     <p>
-      <button mat-raised-button class="field" color="basic">
+      <button mat-raised-button class="field" color="basic" (click)="registerWithProviders('f')">
         <mat-icon class="fit_logo" svgIcon="facebook"></mat-icon> Register With Facebook
       </button>
     </p>

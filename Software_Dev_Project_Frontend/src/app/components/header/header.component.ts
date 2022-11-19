@@ -2,14 +2,14 @@ import { TemplateBindingParseResult } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 interface Shop_Categories {
-  id: string;
-  name: string;
+  key: string;
+  value: string;
 }
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 
 
@@ -24,13 +24,14 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
-  selected_shop_item = { id : '0', name:''}
+  selected_shop_item!:Shop_Categories
   shop_categories :Shop_Categories[] = []
 
-  selectedItem(): void {
+  selectedItem(cat: any): void {
     this.route = 's'
+    this.selected_shop_item = cat
     sessionStorage.setItem('route', this.route)
-    this.shop_item.emit(this.selected_shop_item)
+    this.shop_item.emit([this.selected_shop_item])
     this.routing.emit(this.route)
 
   }
@@ -38,12 +39,12 @@ export class HeaderComponent implements OnInit {
   getShopItems() {
     return [
       {
-        id: '1',
-        name: "Trees"
+        key: '1',
+        value: "Trees"
       },
       {
-        id: '2',
-        name: "Cakes"
+        key: '2',
+        value: "Cakes"
       }
     ]
   }
@@ -52,9 +53,12 @@ export class HeaderComponent implements OnInit {
   changeRoute(route: string) {
     this.route = route
     sessionStorage.setItem('route', this.route)
-    this.routing.emit(route)
-    if (route == 's')
-      this.selected_shop_item = { id : '0', name:''}
+    
+    if (route == 's'){
+      this.selected_shop_item = { key : '', value:''}
+    }
+      this.shop_item.emit([])
+      this.routing.emit(route)
   }
   login() {
     this.route = 'l'
