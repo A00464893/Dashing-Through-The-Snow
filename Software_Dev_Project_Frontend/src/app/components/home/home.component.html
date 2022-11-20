@@ -6,7 +6,7 @@
       <p class="text">Dashing Through<br><br><br>
         the Snow</p>
         <br>
-      <ngb-carousel class="carousel"  *ngIf="images">
+      <ngb-carousel class="carousel mat-elevation-z8"  *ngIf="images">
         <ng-template *ngFor="let img of images;let i=index;" ngbSlide>
           <div class="picsum-img-wrapper">
             <img [src]="img" alt="Random first slide" />

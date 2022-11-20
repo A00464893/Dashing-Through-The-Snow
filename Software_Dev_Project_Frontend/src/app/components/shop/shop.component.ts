@@ -49,6 +49,10 @@ export class ShopComponent implements OnInit {
   }
 
   clear_selection(select: any){
+    if (select.key == 'price'){
+      this.price_attributes.min = this.price_attributes.options.floor
+      this.price_attributes.max = this.price_attributes.options.ceil
+    }
     this.selectedCat.splice(this.selectedCat.findIndex(x => x.key === select.key && x.value === select.value),1)
   }
   price_filter(event: any) {
