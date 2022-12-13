@@ -49,6 +49,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { AccountComponent } from './components/account/account.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ShopComponent } from './components/shop/shop.component';
+import { ShopCardComponent } from './components/shop-card/shop-card.component';
+
 
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -102,14 +104,15 @@ const routes: Routes = [
     CartComponent,
     AccountComponent,
     AboutUsComponent,
-    ShopComponent
+    ShopComponent,
+    ShopCardComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes), BrowserAnimationsModule, SocialLoginModule, MatAutocompleteModule, MatBadgeModule, MatBottomSheetModule,
     MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatTableModule, NgbModule,
     MatDividerModule, NgxUiLoaderModule.forRoot(ngxUiLoaderConfig), NgxUiLoaderRouterModule, NgxUiLoaderHttpModule, MatIconModule, MatMenuModule,
     MatSelectModule, MatToolbarModule, MatTooltipModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSidenavModule, MatExpansionModule,
-    NgxSliderModule
+    NgxSliderModule, MatCardModule
   ],
   providers: [
     {

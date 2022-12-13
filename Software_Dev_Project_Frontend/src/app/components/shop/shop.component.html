@@ -52,6 +52,7 @@
   </mat-drawer>
 
   <div class="sidenav-content">
+   
     <div class="toggle_col">
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon *ngIf="drawer.opened" matTooltip="Hide Filters">arrow_left</mat-icon>
@@ -59,9 +60,17 @@
       </button>
     </div>
     <div class="rest_col">
+      
+
+      <app-shop-card>
+        
+      </app-shop-card>
+       
+
 
     </div>
 
   </div>
 
+  
 </mat-drawer-container>
