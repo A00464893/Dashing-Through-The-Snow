@@ -9,10 +9,25 @@ export class HomeComponent implements OnInit {
   @Output() getBadge = new EventEmitter();
   constructor() { }
 
-  @Input() loginFlag: boolean | undefined ;
+  @Input() loginFlag: boolean | undefined;
   badge = 0
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  updateBadge(item:Object){
+  images = [{
+    img: "../../../assets/image1.png",
+    label:"",
+    button: ""
+  },
+  {
+    img: "../../../assets/image2.png",
+    label:"",
+    button: ""
+  },
+  {
+    img: "../../../assets/image3.png",
+    label:"",
+    button: ""
+  }
+  ];
+  updateBadge(item: Object) {
     this.getBadge.emit(this.badge)
   }
   ngOnInit(): void {

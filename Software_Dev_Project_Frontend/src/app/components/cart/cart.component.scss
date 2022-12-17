@@ -1,0 +1,108 @@
+.center {
+    padding-top: 2vh;
+    justify-content: center;
+    align-self: center;
+    width: 100vw;
+    height: 84vh;
+    background-color: #FAFAFA;
+}
+
+.name_font {
+    font-weight: 450;
+    font-size: 2vh;
+}
+
+.add_font {
+    font-weight: 400;
+    font-size: 2vh;
+}
+
+.name_opt_font {
+    font-weight: 450;
+    font-size: 1.5vh;
+}
+
+.add_opt_font {
+    font-weight: 400;
+    font-size: 1.5vh;
+}
+
+.mat-toolbar {
+    position: relative;
+}
+
+.br_h {
+    line-height: 5px;
+}
+
+.auto-width {
+    .mat-form-field {
+        width: auto !important;
+    }
+
+    .mat-select-value {
+        max-width: 100%;
+        width: auto;
+    }
+}
+
+.image_css {
+    height: 8vh;
+    width: 8vh;
+}
+
+.mat-option_h {
+    height: 3em !important;
+    line-height: 16px !important;
+}
+
+.stepper {
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid lightgray;
+    justify-content: center;
+    align-items: center;
+}
+
+.stepper_text {
+    height: 40px;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.allign_grid {
+    justify-content: unset !important;
+
+}
+
+.mat-stepper-horizontal {
+    margin-top: 8px;
+}
+.form_field_spacer {
+    margin-left: 8px !important;
+    margin-right: 8px !important;
+}
+
+.example-right-align {
+    text-align: center;
+    width: 75%;
+  }
+.ng{
+    align-items: center;
+    display: grid;
+}
+
+.icon_spacer {
+    width: 4vh;
+}
+
+.example-month-picker .mat-calendar-period-button {
+    pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+    display: none;
+}

@@ -1,4 +1,4 @@
-<div class="main-body">
+<div style="overflow-y: hidden;" class="main-body">
   <div class="row">
     <div class="col-1"></div>
     <div class="col-6">
@@ -9,11 +9,11 @@
       <ngb-carousel class="carousel mat-elevation-z8"  *ngIf="images">
         <ng-template *ngFor="let img of images;let i=index;" ngbSlide>
           <div class="picsum-img-wrapper">
-            <img [src]="img" alt="Random first slide" />
+            <img [src]="img.img" alt="Random first slide" />
           </div>
           <div class="carousel-caption">
-            <h3>{{i + 1}} label</h3>
-            <p>Let's Play</p>
+            <!-- <h3>{{img.label}}</h3>
+            <p mat-button [routerLink]="" target="_blank">Link</p> -->
           </div>
         </ng-template>
       </ngb-carousel>

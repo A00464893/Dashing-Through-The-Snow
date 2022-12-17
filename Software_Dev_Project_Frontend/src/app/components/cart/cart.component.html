@@ -1,1 +1,191 @@
-<p>cart works!</p>
+<div class="row center">
+
+    <div *ngIf="!place_order" class="col-md-7 offset-md-1">
+        <mat-toolbar *ngIf="list_add.length > 0" class="mat-elevation-z2">
+            <a>
+                <span class="add_font" style="color:  #2974F1;">Deliver to :&nbsp; </span>
+                <span class="name_font">{{selected_add.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span class="name_font">{{selected_add.mobile}}</span>
+                <br>
+                <span *ngIf="selected_add.flat_no != ' '" class="add_font">{{selected_add.flat_no}}&nbsp; -
+                    &nbsp;</span>
+                <span class="add_font">{{selected_add.street_address}}, &nbsp;</span>
+                <span class="add_font">{{selected_add.postal_code}}, &nbsp;</span>
+                <span class="add_font">{{selected_add.city}}, &nbsp;</span>
+                <span class="add_font">{{selected_add.province}}, &nbsp;</span>
+                <span class="add_font">{{selected_add.country}}</span>
+            </a>
+            <span class="example-spacer"></span>
+            <mat-form-field class="auto-width">
+                <mat-label>Change Address</mat-label>
+                <mat-select>
+                    <mat-option class="mat-option_h" *ngFor="let add of list_add" (click)="change_add(add)">
+                        <span class="name_opt_font">{{add.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="name_opt_font">{{add.mobile}}</span>
+                        <br>
+                        <span *ngIf="add.flat_no != ' '" class="add_opt_font">{{add.flat_no}}&nbsp;-&nbsp;</span>
+                        <span class="add_opt_font">{{add.street_address}},&nbsp;</span>
+                        <span class="add_opt_font">{{add.postal_code}},&nbsp;</span>
+                        <br>
+                        <span class="add_opt_font">{{add.city}},&nbsp;</span>
+                        <span class="add_opt_font">{{add.province}},&nbsp;</span>
+                        <span class="add_opt_font">{{add.country}}</span>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-toolbar>
+        <mat-toolbar style="color:#58081a;" class="mat-elevation-z2" *ngIf="list_add.length == 0">Add Address in Profile
+            Page to Proceed</mat-toolbar>
+        <br>
+        <div *ngIf="cart_items.length > 0">
+            <mat-grid-list *ngFor="let tile of cart_items" cols="7" rowHeight="4vh">
+                <mat-grid-tile colspan="2" rowspan="3">
+                    <img [src]="tile.image" class="image_css">
+                </mat-grid-tile>
+                <mat-grid-tile colspan="3" rowspan="2">
+                    {{tile.name}}
+                </mat-grid-tile>
+                <mat-grid-tile colspan="2" rowspan="3">
+                    <div class="row stepper">
+                        <div class="col-4">
+                            <button mat-icon-button color="primary" (click)="change_quantity(tile.id,'remove')">
+                                <mat-icon>remove</mat-icon>
+                            </button>
+                        </div>
+                        <div class="col-4 stepper_text">
+                            {{tile.quantity}}
+                        </div>
+                        <div class="col-4">
+                            <button class="col-4" mat-icon-button color="primary"
+                                (click)="change_quantity(tile.id,'add')">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="3" rowspan="1" class="name_font">
+                    CAD ${{tile.price}}
+                </mat-grid-tile>
+                <mat-divider></mat-divider>
+            </mat-grid-list>
+        </div>
+        <mat-toolbar style="color:#58081a;" class="mat-elevation-z2" *ngIf="cart_items.length == 0">Shop before
+            Checkout</mat-toolbar>
+        <mat-divider></mat-divider>
+
+    </div>
+    <div *ngIf="place_order" class="col-md-7 offset-md-1">
+        <mat-stepper  linear #stepper>
+            <mat-step class="ng">
+                <ng-template matStepLabel>Select Address</ng-template>
+                <mat-form-field class="auto-width">
+                    <mat-label>Change Address</mat-label>
+                    <mat-select [(value)]="selected_add">
+                        <mat-option class="mat-option_h" *ngFor="let add of list_add" [value]="add"
+                            (click)="change_add(add)">
+                            <span class="name_opt_font">{{add.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span class="name_opt_font">{{add.mobile}}</span>
+                            <br>
+                            <span *ngIf="add.flat_no != ' '" class="add_opt_font">{{add.flat_no}}&nbsp;-&nbsp;</span>
+                            <span class="add_opt_font">{{add.street_address}},&nbsp;</span>
+                            <span class="add_opt_font">{{add.postal_code}},&nbsp;</span>
+                            <br>
+                            <span class="add_opt_font">{{add.city}},&nbsp;</span>
+                            <span class="add_opt_font">{{add.province}},&nbsp;</span>
+                            <span class="add_opt_font">{{add.country}}</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div>
+                    <a>
+                        <span class="add_font" style="color:  #2974F1;">Deliver to :&nbsp; </span>
+                        <span class="name_font">{{selected_add.name}}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="name_font">{{selected_add.mobile}}</span>
+                        <br>
+                        <span *ngIf="selected_add.flat_no != ' '" class="add_font">{{selected_add.flat_no}}&nbsp; -
+                            &nbsp;</span>
+                        <span class="add_font">{{selected_add.street_address}}, &nbsp;</span>
+                        <span class="add_font">{{selected_add.postal_code}}, &nbsp;</span>
+                        <span class="add_font">{{selected_add.city}}, &nbsp;</span>
+                        <span class="add_font">{{selected_add.province}}, &nbsp;</span>
+                        <span class="add_font">{{selected_add.country}}</span>
+                    </a>
+                    <br>
+                    <br>
+                </div>
+                <div>
+                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                </div>
+            </mat-step>
+            <mat-step class="ng">
+                <ng-template matStepLabel>Fill out the Details</ng-template>
+                <h4 style="color:  #2974F1;font-weight: bold;">{{card_details.card_type}}</h4>
+                <mat-form-field appearance="fill" class="form_field_spacer">
+                    <mat-label>Name on Card</mat-label>
+                    <input matInput required [(ngModel)]="card_details.name_on_card">
+                    <mat-hint style="color: rgba(192, 23, 7, 0.7);" *ngIf="!valid_name(card_details.name_on_card)">Enter a Valid Name</mat-hint>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill" class="form_field_spacer">
+                    <mat-label>Credit Card Number</mat-label>
+                    <input matInput required type="number" [(ngModel)]="card_details.card_number">
+                    <mat-hint style="color: rgba(192, 23, 7, 0.7);" *ngIf="!valid_card(card_details.card_number)">Enter Valid Card Number</mat-hint>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill" class="form_field_spacer">
+                    <mat-label>CVV</mat-label>
+                    <input matInput type="number" maxlength="3" minlength="3" placeholder=""
+                        [(ngModel)]="card_details.cvv" required>
+                        <mat-hint style="color: rgba(192, 23, 7, 0.7);" *ngIf="!valid_cvv(card_details.cvv)">Enter Valid CVV</mat-hint>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill" class="form_field_spacer">
+                    <mat-label>Expiry Date</mat-label>
+                    <input matInput type="text" maxlength="7" minlength="7" placeholder="MM/YYYY"
+                        [(ngModel)]="card_details.expiry" required>
+                        <mat-hint style="color: rgba(192, 23, 7, 0.7);" *ngIf="!valid_expiry(card_details.expiry)">Enter Valid Expiry Date (MM/YYYY)</mat-hint>
+                </mat-form-field>
+                <!-- <mat-form-field appearance="fill" class="form_field_spacer">
+                    <mat-label>Month and Year</mat-label>
+                    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="dp" [formControl]="date" [(ngModel)]="card_details.expiry"
+                        class="example-right-align">
+                    <mat-hint>MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+                    <mat-datepicker #dp startView="multi-year" (monthSelected)="setMonthAndYear($event, dp)"
+                        panelClass="example-month-picker">
+                    </mat-datepicker>
+                </mat-form-field> -->
+                <br>
+                <div>
+                    <button mat-button style="margin-right: 4vh;" matStepperPrevious>Back</button>
+                    <button [disabled]="!valid_card(card_details.card_number) || !valid_cvv(card_details.cvv) || !valid_expiry(card_details.expiry) 
+                    || !valid_name(card_details.name_on_card)" mat-raised-button color="primary" (click)="make_payemnt()">Confirm</button>
+                </div>
+            </mat-step>
+        </mat-stepper>
+    </div>
+    <div *ngIf="cart_items.length > 0" class="col-md-3 offset-md-1">
+        <br>
+        <!-- <h4 style="color:  #2974F1;">PRICE DETAILS</h4> -->
+        <mat-toolbar style="color:  #2974F1;" class="name_font mat-elevation-z2">PRICE DETAILS</mat-toolbar>
+        <mat-divider></mat-divider>
+        <mat-grid-list *ngFor="let tile of cart_items" cols="3" rowHeight="4vh">
+            <mat-grid-tile colspan="2" rowspan="1" class="add_font allign_grid">
+                {{tile.name}}
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1" class="add_font allign_grid">
+                CAD ${{tile.total_price}}
+            </mat-grid-tile>
+        </mat-grid-list>
+        <mat-divider></mat-divider>
+        <mat-toolbar class="name_font mat-elevation-z2">
+            Total Price : CAD ${{total_price}}
+            <span class="example-spacer"></span>
+            <button *ngIf="!place_order" mat-raised-button color="primary" [disabled]="list_add.length == 0"
+                (click)="place_order = true">Place Order</button>
+            <button *ngIf="place_order" mat-raised-button color="accent" (click)="place_order = false">Cancel</button>
+        </mat-toolbar>
+    </div>
+
+</div>

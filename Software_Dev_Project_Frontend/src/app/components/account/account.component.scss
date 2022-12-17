@@ -1,0 +1,89 @@
+.sidenav {
+    padding: 1vh;
+    width: 20vw;
+    overflow: hidden;
+}
+
+.sidenav-content {
+    display: flex;
+    padding: 1vh 2vh 1vh 0;
+    height: 100%;
+    // align-items: center;
+    justify-content: center;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.icon_spacer {
+    width: 4vh;
+}
+.card_straw{
+    height: 30vh
+}
+.name_font{
+    font-weight: 450;
+    font-size: 2vh;
+}
+.add_font{
+    font-weight: 400;
+    font-size: 2vh;
+}
+.nav_add{
+    box-sizing: border-box;
+    border: 2px solid gray;
+}
+.logout {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.subtitle {
+    font-size: 3vh;
+}
+
+.form_field_spacer {
+    margin-left: 8px !important;
+    margin-right: 8px !important;
+}
+
+.mat-radio-button{
+    margin-left: 16px;
+}
+
+.add_address{
+    // border: 2px solid grey;
+    // border-radius: 4px;
+    width: 75vw;
+    height: 100%;
+}
+.overlay_table{
+    width:100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.image_css{
+    height: 8vh;
+    width: 8vh;
+}
+.selected{
+    color: #2974F1;
+    background-color: #F4FAFE;
+}
+
+.example-right-align {
+    text-align: center;
+    width: 85%;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
