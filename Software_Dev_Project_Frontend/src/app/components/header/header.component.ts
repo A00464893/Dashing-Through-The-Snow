@@ -84,9 +84,11 @@ export class HeaderComponent implements OnInit {
     sessionStorage.setItem('user', '')
 
   }
+
   getBadge(badge: number) {
     this.badge = badge
   }
+  
   ngOnInit(): void {
     this.route = sessionStorage.getItem('route') || 'h'
     this.changeRoute(this.route)

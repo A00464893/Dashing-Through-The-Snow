@@ -6,7 +6,7 @@
     <p>
       <mat-form-field  appearance="outline">
         <mat-label>Enter Email</mat-label>
-        <input matInput placeholder="pat@example.com" [formControl]="email_login" [(ngModel)]="login_input.email" required>
+        <input matInput placeholder="pat@example.com" [formControl]="email_login" [(ngModel)]="login_input.username" required>
         <mat-error *ngIf="email_login.invalid">{{getLoginEmailError()}}</mat-error>
         <mat-icon matSuffix>email</mat-icon>
         <!-- <mat-hint>Hint</mat-hint> -->
@@ -23,7 +23,7 @@
       </mat-form-field>
     </p>
     <p>
-      <button [disabled]="login_input.email == '' || login_input.password== '' || email_login.invalid" mat-raised-button class="field" color="primary" 
+      <button [disabled]="login_input.username == '' || login_input.password == '' || login_input.password == null || email_login.invalid" mat-raised-button class="field" color="primary" 
       (click)="login()">Login</button>
     </p>
     <div class="contain">
@@ -54,13 +54,13 @@
     <p>
       <mat-form-field appearance="outline">
         <mat-label>First Name</mat-label>
-        <input matInput placeholder="First Name" [(ngModel)]="register_input.first">
+        <input matInput placeholder="First Name" [(ngModel)]="register_input.first_name">
       </mat-form-field>
     </p>
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Last Name" [(ngModel)]="register_input.last">
+        <input matInput placeholder="Last Name" [(ngModel)]="register_input.last_name">
       </mat-form-field>
     </p>
     <p>
@@ -90,8 +90,9 @@
       </mat-form-field>
     </p>
     <p>
-      <button [disabled]="register_input.email == '' || register_input.password== '' || register_input.first== '' || register_input.last== '' 
-      || register_input.confirm_password== '' || email_register.invalid" mat-raised-button class="field" color="primary" (click)="register()">Register</button>
+      <button [disabled]="register_input.email == '' || register_input.password== '' || register_input.first_name== '' || register_input.last_name== '' 
+      || register_input.confirm_password== ''|| register_input.password== null || register_input.first_name== null || register_input.last_name== null
+      || register_input.confirm_password== null || email_register.invalid" mat-raised-button class="field" color="primary" (click)="register()">Register</button>
     </p>
     <div class="contain">
       <div class="line"><mat-divider></mat-divider></div>
