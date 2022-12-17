@@ -1,14 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-namespace SaintMarysUniversity.Models
+﻿using System.Collections.Generic;
+
+namespace Backend.Models
 {
-    public class orders.cs
+    public class Orders
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
-        public int user_ID { get; set; }
-        public int total { get; set; }
-        public int payment_id { get; set; }
+        public int Id { get; set; }
+        public String? Username { get; set; }
+        public int Total { get; set; }
+        public int Payment_id { get; set; }
+        public String? order_date { get; set; }
+       
+
     }
 }
