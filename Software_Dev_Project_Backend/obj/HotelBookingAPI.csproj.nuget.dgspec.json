@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj": {}
+    "C:\\Users\\rashad\\Downloads\\asp-net-6-yt-rest-api-main\\asp-net-6-yt-rest-api-main\\HotelBookingAPI\\HotelBookingAPI.csproj": {}
   },
   "projects": {
-    "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj": {
+    "C:\\Users\\rashad\\Downloads\\asp-net-6-yt-rest-api-main\\asp-net-6-yt-rest-api-main\\HotelBookingAPI\\HotelBookingAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj",
-        "projectName": "Backend",
-        "projectPath": "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj",
-        "packagesPath": "C:\\Users\\Creycott\\.nuget\\packages\\",
-        "outputPath": "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\obj\\",
+        "projectUniqueName": "C:\\Users\\rashad\\Downloads\\asp-net-6-yt-rest-api-main\\asp-net-6-yt-rest-api-main\\HotelBookingAPI\\HotelBookingAPI.csproj",
+        "projectName": "HotelBookingAPI",
+        "projectPath": "C:\\Users\\rashad\\Downloads\\asp-net-6-yt-rest-api-main\\asp-net-6-yt-rest-api-main\\HotelBookingAPI\\HotelBookingAPI.csproj",
+        "packagesPath": "C:\\Users\\rashad\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rashad\\Downloads\\asp-net-6-yt-rest-api-main\\asp-net-6-yt-rest-api-main\\HotelBookingAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Creycott\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rashad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,17 +40,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore.Analyzers": {
-              "target": "Package",
-              "version": "[7.0.1, )"
-            },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[6.0.3, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[7.0.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -76,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

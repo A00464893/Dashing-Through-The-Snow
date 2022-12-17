@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj": {}
+    "E:\\sd\\Software_Dev_Project\\Software_Dev_Project_Backend\\BackendAPI\\UserDataAPI.csproj": {}
   },
   "projects": {
-    "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj": {
+    "E:\\sd\\Software_Dev_Project\\Software_Dev_Project_Backend\\BackendAPI\\UserDataAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj",
-        "projectName": "Backend",
-        "projectPath": "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj",
-        "packagesPath": "C:\\Users\\Creycott\\.nuget\\packages\\",
-        "outputPath": "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\obj\\",
+        "projectUniqueName": "E:\\sd\\Software_Dev_Project\\Software_Dev_Project_Backend\\BackendAPI\\UserDataAPI.csproj",
+        "projectName": "UserDataAPI",
+        "projectPath": "E:\\sd\\Software_Dev_Project\\Software_Dev_Project_Backend\\BackendAPI\\UserDataAPI.csproj",
+        "packagesPath": "C:\\Users\\rashad\\.nuget\\packages\\",
+        "outputPath": "E:\\sd\\Software_Dev_Project\\Software_Dev_Project_Backend\\BackendAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Creycott\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rashad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,10 +40,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore.Analyzers": {
-              "target": "Package",
-              "version": "[7.0.1, )"
-            },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[6.0.3, )"
@@ -76,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
