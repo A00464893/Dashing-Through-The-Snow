@@ -1,18 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-namespace SaintMarysUniversity.Models
+﻿namespace Backend.Models
 {
-    public class product.cs
+    public class Product
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
-        public string name { get; set; }
-        public string desc{ get; set; }
-        public string image { get; set; }
-        public int category_id { get; set; }
+        public string? Id { get; set; }
+        public string? Name { get; set; }
+        public string? Desc { get; set; }
+        public string? image { get; set; }
+        public string? category_id { get; set; }
         public int quantity { get; set; }
         public int price { get; set; }
-        
+
     }
 }
