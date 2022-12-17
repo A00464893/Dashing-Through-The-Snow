@@ -1,0 +1,123 @@
+.About_me_body{
+    overflow-y: auto;
+    width: 100%;
+    height: 86.5vh;
+}
+.intro_heading
+{
+    text-align: center;
+    font-weight: 700;
+    font-size: 52.118px;
+    font-family: "NeueEinstellung";
+    padding-top: 50px;
+}
+.intro_body
+{
+    text-align: center;
+    padding-left: 250px;
+    padding-right:250px;
+    font-size: 16px;
+    font-family: "Radnika";
+
+    
+}
+.intro_image
+{
+    height:500px;
+    width:100%;
+    padding-left: 150px;
+    padding-right:150px;
+    
+    
+}
+.story
+{
+    display: flex;
+    padding-left: 250px;
+    padding-right:250px;
+    padding-top: 50px;
+}
+.story_heading
+{
+    padding-left: 20px;
+    font-weight: 700;
+    font-size: 48px;
+    font-family: "NeueEinstellung";
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #58081a !important;
+}
+.story_content
+{
+    padding-left: 20px;
+    padding-right:100px;
+    font-size: 16px;
+    font-family: "Radnika";
+}
+.vision
+{
+    display: flex;
+    padding-left: 250px;
+    padding-right:250px;
+    padding-top: 50px;
+
+}
+.vision_heading
+{
+    padding-left: 70px;
+    font-weight: 700;
+    font-size: 48px;
+    font-family: "NeueEinstellung";
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #58081a !important;
+}
+.vision_content
+{
+    padding-left: 70px;
+    padding-right:100px;
+    font-size: 16px;
+    font-family: "Radnika";
+}
+
+.second_image{
+    padding-left: 20px;
+  
+}
+.contact
+{
+    background: #58081a;
+    display: flex;
+    padding-left: 250px;
+    padding-right:250px;
+
+}
+.contact_content
+{
+    text-align: center;
+    
+    padding-left: 50px;
+    padding-right:100px;
+    padding-top: 50px;
+    color: white !important;
+    font-weight: 100;
+    font-size: 18px;
+    font-family: "NeueEinstellung";
+
+}
+.contact_heading
+{
+    text-align: center;
+
+    padding-top: 70px;
+    font-weight: 700;
+    font-size: 48px;
+    font-family: "NeueEinstellung";
+}
+.contact_content_heading
+{
+    color: white !important;
+    font-weight: 100;
+    font-size: 18px;
+    font-family: "NeueEinstellung";
+}

@@ -11,13 +11,6 @@
     </p>
     <mat-divider *ngIf="check_selected()"></mat-divider>
     <mat-accordion class="headers-align" multi>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Categories
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-      </mat-expansion-panel>
       <div class="sidenav">
         <div style="padding: 0 1vh 0 1vh;font-size: 15px;font-weight: 400;">Price</div>
         <!-- <mat-slider class="slider_css" min="0" max="10000" (valueChange)="price_filter($event)">
@@ -43,16 +36,26 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
+            Categories
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-selection-list [multiple]="false" #category (selectionChange)="cat_filter($event, category.selectedOptions)">
+            <mat-list-option *ngFor="let cat of product_cat" [value]="cat.name">{{cat.name}}</mat-list-option>
+        </mat-selection-list>
+      </mat-expansion-panel>
+      
+      <!-- <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
             Products
           </mat-panel-title>
         </mat-expansion-panel-header>
-      </mat-expansion-panel>
+      </mat-expansion-panel> -->
     </mat-accordion>
 
   </mat-drawer>
 
   <div class="sidenav-content">
-   
     <div class="toggle_col">
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon *ngIf="drawer.opened" matTooltip="Hide Filters">arrow_left</mat-icon>
@@ -60,17 +63,35 @@
       </button>
     </div>
     <div class="rest_col">
-      
-
-      <app-shop-card>
+      <div class="parent">
+        <img src="https://golfelchaparral.com/wp-content/uploads/2021/12/header-navidad.jpeg" alt="intro_image" class="intro_image">
+        <div class="child"><p class="child1">Shop From the Comfort of your Home</p></div>
+        </div>
+        <div class="row card_straw">
+          <mat-card class="col-3" *ngFor="let item of filteredArr">
+            <mat-card-header>
+              <mat-card-title>{{item.name}}</mat-card-title>
+              <mat-card-subtitle>{{item.category}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="item.image" >
+            <mat-card-content class="content">
+               {{item.desc}}
+            </mat-card-content>
+            <mat-card-actions>
+              <mat-toolbar>
+                <span class="prices">
+                  CAD ${{item.price}} 
+                </span>
+                <span class="example-spacer"></span>
+                <button mat-raised-button color="primary" (click)="updateCart(item)">ADD TO CART</button>
+              </mat-toolbar>
+            </mat-card-actions>
+          </mat-card>
+        </div>
         
-      </app-shop-card>
-       
-
-
+        
     </div>
 
   </div>
 
-  
 </mat-drawer-container>

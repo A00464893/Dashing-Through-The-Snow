@@ -106,3 +106,76 @@ button.hover_class:hover, button.hover_class i:hover {
     background: orange;
   }
 }
+
+.intro_image
+{
+    height:300px;
+    width:100%;
+    // padding-left: 100px;
+    padding-right:27px;
+    gap:5px;
+    padding-bottom: 40px;
+    position: relative;
+    
+    
+    
+}
+.child
+{
+    position:absolute;
+    top: 150px;
+    left:50px;
+
+    z-index: 1;
+    
+
+
+}
+.child1
+{
+    padding: 30px;
+    color: white !important;
+    font-weight: 100;
+    font-size: 38px;
+    font-family: "NeueEinstellung";
+    background-color: rgba(192, 23, 7, 0.7)
+}
+.shop-card-container{
+    display:flex;
+    flex-wrap: wrap;
+    gap:2vh;
+}
+.shop-card{
+width:30%;
+height:45%;
+}
+.icon_spacer {
+  width: 4vh;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.contents
+{
+    font-weight: 50;
+    font-family: "Radnika";
+    height: 10vh;
+    
+}
+.prices{
+    font-weight:bolder;
+    justify-content: center;
+    align-items: center;
+    font-family: "Radnika";
+}
+mat-card img{
+    object-fit: cover;
+    height:50%;
+    padding-left: 10%;
+    padding-right: 10%;
+    // height:400px;
+    // padding-left: 30px;
+}
+
+
+
