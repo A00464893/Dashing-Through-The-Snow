@@ -5,7 +5,10 @@ import { FacebookLoginProvider, GoogleLoginProvider } from "@abacritt/angularx-s
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UsersService } from 'src/app/services/users.service';
+import { SharedService } from 'src/app/services/shared.service';
 import { throwError } from 'rxjs';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 
@@ -24,19 +27,20 @@ export class LoginComponent implements OnInit {
   register_hide = true;
 
   login_input = {
-    email: "",
+    username: "",
     password: ""
   }
   register_input = {
-    first: "",
-    last: "",
+    first_name: "",
+    last_name: "",
     email: "",
     password: "",
     confirm_password: "",
-
+    username:''
   }
 
-  constructor(private authService: SocialAuthService, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private userService: UsersService) {
+  constructor(private authService: SocialAuthService, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, 
+    private userService: UsersService,private sharedService: SharedService,  private _router: Router) {
     this.matIconRegistry.addSvgIcon(
       "google",
       this.domSanitizer
@@ -85,7 +89,7 @@ export class LoginComponent implements OnInit {
     this.authService.authState.subscribe((result) => {
       this.provideDetails = result;
       if (type == 'l') {
-        this.login_input.email = this.provideDetails['email']
+        this.login_input.username = this.provideDetails['email']
         this.login_input.password = this.provideDetails['id']
         this.login()
       }
@@ -93,22 +97,63 @@ export class LoginComponent implements OnInit {
         this.register_input.email = this.provideDetails.email
         this.register_input.password = this.provideDetails.id
         this.register_input.confirm_password = this.provideDetails.id
-        this.register_input.first = this.provideDetails.firstName
-        this.register_input.last = this.provideDetails.lastName
+        this.register_input.first_name = this.provideDetails.firstName
+        this.register_input.last_name = this.provideDetails.lastName
         this.register()
       }
     })
   }
 
   login() {
-    this.userDetails = this.userService.login(this.login_input)
-    this.user = this.userDetails.name;
+    this.userService.login(this.login_input).subscribe((r : any) =>{
+        this.userDetails = r.value
+        this.user = this.userDetails.username
+        sessionStorage.setItem('user_id',this.userDetails.username)
+        sessionStorage.setItem('user_details',JSON.stringify(this.userDetails))
+        this.loginFlag = true
+        this.sharedService.loginFlag.next(this.loginFlag);
+        this.sharedService.route.next('s');
+        this._router.navigate(['shop'])
+    },err=>{
+      if(err.status == 401){
+        console.log(err)
+        Swal.fire(
+          'Error',
+          'User Not Found',
+          'error'
+        )
+      }
+      else{
+        Swal.fire(
+          'Error',
+          'Wrong Password',
+          'error'
+        )
+      }
+      
+    })
     this.logged_user.emit(this.userDetails)
     this.login_input = this.userService.clear_Obj(this.login_input)
   }
   register() {
-    this.userDetails = this.userService.register(this.login_input)
-    this.user = this.userDetails.name;
+    this.register_input.username = this.register_input.email.toLowerCase()
+    this.userDetails = this.userService.register(this.register_input).subscribe((r : any) =>{
+      this.userDetails = r.value
+      this.user = this.userDetails.username
+      this.loginFlag = true
+      this.sharedService.loginFlag.next(this.loginFlag);
+      this.sharedService.route.next('s');
+      sessionStorage.setItem('user_id',this.userDetails.username)
+      sessionStorage.setItem('user_details',this.userDetails.toString())
+      this._router.navigate(['shop'])
+    },err=>{
+      Swal.fire(
+        'Error',
+        'User Already Exists',
+        'error'
+      )
+    }
+    )
     this.logged_user.emit(this.userDetails)
     this.register_input = this.userService.clear_Obj(this.register_input)
   }
@@ -130,6 +175,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.login_input = this.userService.clear_Obj(this.login_input)
     this.register_input = this.userService.clear_Obj(this.register_input)
+    this.sharedService.loginFlag.next(this.loginFlag);
+    this.sharedService.loginFlag.subscribe((flag) => {
+      this.loginFlag = flag
+  });
   }
 
 }
