@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ResourceLoader } from '@angular/compiler';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-about-us',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutUsComponent implements OnInit {
 
-  constructor() { }
-
+  
+  
+  
   ngOnInit(): void {
   }
 
+
+
+
+
+ 
+  
+ 
+
+
+
 }
+
