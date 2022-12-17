@@ -1,29 +1,60 @@
-<ngx-ui-loader
-  [fgsColor]="config.fgsColor"
-  [fgsSize]="config.fgsSize"
-  [bgsColor]="config.bgsColor"
-  [bgsOpacity]="config.bgsOpacity"
-  [bgsSize]="config.bgsSize"
-  [gap]="config.gap"
-  [logoSize]="config.logoSize"
-  [logoUrl]="config.logoUrl"
-  [overlayColor]="config.overlayColor"
-  [pbColor]="config.pbColor"
-  [pbThickness]="config.pbThickness"
-  [hasProgressBar]="config.hasProgressBar"
-  [text]="config.text"
-  [textColor]="config.textColor"
-></ngx-ui-loader>
+<ngx-ui-loader [fgsColor]="config.fgsColor" [fgsSize]="config.fgsSize" [bgsColor]="config.bgsColor"
+  [bgsOpacity]="config.bgsOpacity" [bgsSize]="config.bgsSize" [gap]="config.gap" [logoSize]="config.logoSize"
+  [logoUrl]="config.logoUrl" [overlayColor]="config.overlayColor" [pbColor]="config.pbColor"
+  [pbThickness]="config.pbThickness" [hasProgressBar]="config.hasProgressBar" [text]="config.text"
+  [textColor]="config.textColor"></ngx-ui-loader>
 
 <div ngxUiLoaderBlurred>
-<app-header [loginFlag]="loginFlag" [badge]="badge" [selected_shop_item]="shopCat" (routing) = "getRoute($event)" (shop_item) = "getSelectedCat($event)"></app-header>
-<app-login (logged_user)="getUser($event)" *ngIf="route=='l'"></app-login>
-<app-home [loginFlag]="loginFlag" *ngIf="route=='h'"></app-home>
-<app-about-us *ngIf="route=='u'"></app-about-us>
-<app-shop *ngIf="route=='s'" [selectedCat]="shopCat" (updateBadge)="getBadge($event)" (shop_item) = "getSelectedCat($event)"></app-shop>
-<app-cart *ngIf="route=='c'" (updateBadge)="getBadge($event)"></app-cart>
-<app-account *ngIf="route=='a'"></app-account>
-
-<app-footer></app-footer>
+  <!-- <app-header [loginFlag]="loginFlag" [badge]="badge" [selected_shop_item]="shopCat" (routing)="getRoute($event)"
+    (shop_item)="getSelectedCat($event)"></app-header> -->
+    <div class="header">
+      <mat-toolbar>
+        <span class="circle-image mat-elevation-z8">
+          <img src="../../../assets/fox.png" />
+        </span>
+        <span class="icon_spacer"></span>
+        <button mat-button [ngClass]="{'selected':route === 'h'}" (click)="changeRoute('h')" routerLink="/home">Home</button>
+        <span class="icon_spacer"></span>
+        <button mat-button [ngClass]="{'selected':route === 'u'}" (click)="changeRoute('u')" routerLink="/aboutUs">About Us</button>
+        <span class="icon_spacer"></span>
+        <span [ngClass]="{'selected dropdown':route === 's'}">
+          <button mat-button (click)="changeRoute('s')" [disabled]="!loginFlag" routerLink="/shop">Shop</button>
+          <!-- <mat-icon class="arrow">
+            <mat-select disableRipple>
+              <mat-option *ngFor="let cat of shop_categories" [value]="cat" (click)="selectedItem(cat)" routerLink="/shop">{{cat.value}}</mat-option>
+            </mat-select>
+          </mat-icon> -->
+        </span>
+        <span class="spacer"></span>
+        <button mat-button *ngIf="badge > 0" [matBadge]="badge" [disabled]="!loginFlag" [ngClass]="{'selected':route === 'c'}" matTooltip="Cart"
+          (click)="changeRoute('c')" routerLink="/cart">
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
+        <button mat-button *ngIf="badge == 0" [disabled]="!loginFlag" [ngClass]="{'selected':route === 'c'}" matTooltip="Cart"
+          (click)="changeRoute('c')" routerLink="/cart">
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
+        <span class="icon_spacer"></span>
+        <button mat-button *ngIf="!loginFlag" [ngClass]="{'selected':route === 'l'}" aria-label="login" matTooltip="Login"
+          (click)="login()" routerLink="/login">
+          Register / Sign In
+        </button>
+        <button mat-button *ngIf="loginFlag" [ngClass]="{'selected':route === 'a'}" matTooltip="Account"
+          (click)="changeRoute('a')" routerLink="/account">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </mat-toolbar>
+    </div>
+  <!-- <nav>
+    <app-login (logged_user)="getUser($event)" *ngIf="route=='l'" router="/login"></app-login>
+    <app-home [loginFlag]="loginFlag" *ngIf="route=='h'" router="/home"></app-home>
+    <app-about-us *ngIf="route=='u'" router="/aboutUs"></app-about-us>
+    <app-shop *ngIf="route=='s'" [selectedCat]="shopCat" (updateBadge)="getBadge($event)"
+      (shop_item)="getSelectedCat($event)" router="/shop"></app-shop>
+    <app-cart *ngIf="route=='c'" (updateBadge)="getBadge($event)" router="/cart"></app-cart>
+    <app-account *ngIf="route=='a'" router="/account"></app-account>
+  </nav> -->
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
 
 </div>

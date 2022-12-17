@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from '@abacritt/angularx-social-login';
+import { StripeModule } from "stripe-angular"
 import {
   NgxUiLoaderModule,
   NgxUiLoaderConfig,
@@ -27,8 +28,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule, } from '@angular/material/datepicker';
+import {  MatDialogModule } from '@angular/material/dialog';
+import {MatStepperModule} from '@angular/material/stepper';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -37,8 +39,18 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSortModule } from '@angular/material/sort';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { MatSelectFilterModule } from 'mat-select-filter';
+import {MatNativeDateModule} from '@angular/material/core';
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -46,11 +58,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CartComponent } from './components/cart/cart.component';
-import { AccountComponent } from './components/account/account.component';
+import { AccountComponent, OrderDialog } from './components/account/account.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ShopComponent } from './components/shop/shop.component';
-import { ShopCardComponent } from './components/shop-card/shop-card.component';
-
 
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -87,11 +97,13 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
 };
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  // { path: '', redirectTo:"home" ,pathMatch:'full'},
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   { path: "cart", component: CartComponent },
-  { path: "account", component: AccountComponent }
+  { path: "account", component: AccountComponent },
+  { path: "shop", component: ShopComponent },
+  { path: "aboutUs", component: AboutUsComponent }
 
 ]
 @NgModule({
@@ -105,15 +117,18 @@ const routes: Routes = [
     AccountComponent,
     AboutUsComponent,
     ShopComponent,
-    ShopCardComponent
+    OrderDialog
   ],
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes), BrowserAnimationsModule, SocialLoginModule, MatAutocompleteModule, MatBadgeModule, MatBottomSheetModule,
     MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatTableModule, NgbModule,
     MatDividerModule, NgxUiLoaderModule.forRoot(ngxUiLoaderConfig), NgxUiLoaderRouterModule, NgxUiLoaderHttpModule, MatIconModule, MatMenuModule,
     MatSelectModule, MatToolbarModule, MatTooltipModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSidenavModule, MatExpansionModule,
-    NgxSliderModule, MatCardModule
+    NgxSliderModule, MatListModule, MatRadioModule, Ng2SearchPipeModule, MatSelectFilterModule, MatPaginatorModule, MatGridListModule, MatSortModule, MatDialogModule,
+    MatStepperModule, MatMomentDateModule,MatNativeDateModule, 
+    StripeModule.forRoot("sk_test_51MFR71LzcySuQUXlpZ68iaZlriD6rwfbob4feYJ9v3A9x5KX0pmoDUoHZaIEbYa1mavvfLDZlFc1GsKfMjpQ9lmk00jtBP7aR0")
   ],
+  exports: [RouterModule],
   providers: [
     {
       provide: 'SocialAuthServiceConfig',
