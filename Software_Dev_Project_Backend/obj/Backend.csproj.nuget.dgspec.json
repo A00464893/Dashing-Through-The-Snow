@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj": {}
+    "D:\\MCDA\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj": {}
   },
   "projects": {
-    "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj": {
+    "D:\\MCDA\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj",
+        "projectUniqueName": "D:\\MCDA\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj",
+        "projectPath": "D:\\MCDA\\Software_Dev_Project\\Software_Dev_Project_Backend\\Backend.csproj",
         "packagesPath": "C:\\Users\\Creycott\\.nuget\\packages\\",
-        "outputPath": "D:\\MCDA\\Software Development\\Software_Dev_Project\\Software_Dev_Project_Backend\\obj\\",
+        "outputPath": "D:\\MCDA\\Software_Dev_Project\\Software_Dev_Project_Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Creycott\\AppData\\Roaming\\NuGet\\NuGet.Config",
